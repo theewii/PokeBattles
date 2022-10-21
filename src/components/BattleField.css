@@ -30,6 +30,7 @@
 
 .item {
     height:11.5rem;
+    opacity: 0.5;
 }
 .topLeft{
     grid-area: topLeft;
