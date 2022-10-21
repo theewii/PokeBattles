@@ -1,10 +1,14 @@
+:root{
+    --gutter: 1rem; 
+}
+
 .battleFieldContainer{
     background-image: url("../../public/Images/Battlefield.png"); 
     background-size: cover;
     background-repeat: no-repeat, repeat;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    opacity: 0.5
+    padding: var(--gutter);
 }
 
 @media (max-width: 40em){
@@ -14,24 +18,35 @@
         background-size: cover;
         background-repeat: no-repeat, repeat;
         width: 100%;
+        padding: var(--gutter);
     }
+}
 
+.battleGrid{
+    display: grid; 
+    grid-template-columns: 1fr 2fr 1fr;
+    gap:var(--gutter); 
+    grid-template-areas:
+    "topLeft rivalScore topRight"
+    "midLeft1 mid1 midRight1"
+    "midLeft2 mid2 midRight2"
+    "bottomLeft playerScore bottomRight"
 }
 
 .battleGridSmall {
     display: grid; 
     grid-template-columns: 1fr;
+    gap:var(--gutter); 
     grid-template-areas: 
     "rivalScore"
     "rivalPokemon"
     "playerPokemon"
     "playerScore"
-    ;
+    
 }
 
 .itemSmall {
-    height:10rem;
-    opacity: 0.5;
+    height:10.4rem;
 }
 
 .rivalPokemon {
@@ -42,76 +57,60 @@
     grid-area: playerPokemon;
 }
 
-.battleGrid{
-    display: grid; 
-    grid-template-columns: 1fr 2fr 1fr;
 
-    grid-template-areas:
-    "topLeft rivalScore topRight"
-    "midLeft1 mid1 midRight1"
-    "midLeft2 mid2 midRight2"
-    "bottomLeft playerScore bottomRight"
-}
 
 .item {
-    height:11.5rem;
-    opacity: 0.5;
+
 }
 .topLeft{
     grid-area: topLeft;
-    background-color: aqua;
 }
 
 .rivalScore{
     grid-area: rivalScore;
-    background-color:wheat; 
 }
+
 .topRight{
     grid-area: topRight;
-    background-color: rgb(35, 104, 104);
+    grid-row-start: topRight;
+    grid-row-end: midRight1;
 }
 
 .midLeft1 {
     grid-area: midLeft1;
-    background-color: aliceblue;
 }
 
 .mid1 {
     grid-area: mid1;
-    background-color: coral;
 }
 
 .midRight1 {
     grid-area: midRight1;
-    background-color: aquamarine;
 }
 
 .midLeft2 {
     grid-area: midLeft2;
-    background-color: aliceblue;
+    grid-row-start:midLeft2; 
+    grid-row-end:bottomLeft;
 }
 
 .mid2 {
     grid-area: mid2;
-    background-color: coral;
 }
 
 .midRight2 {
     grid-area: midRight2;
-    background-color: aquamarine;
 }
 
 .bottomLeft{
     grid-area: bottomLeft;
-    background-color: chartreuse;
 }
 
 .playerScore {
     grid-area: playerScore;
-    background-color: darkgrey;
 }
 
 .bottomRight {
     grid-area: bottomRight; 
-    background-color: deeppink;
+
 }

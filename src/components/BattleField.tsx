@@ -1,5 +1,6 @@
 import "./BattleField.css"; 
 import { useWindowDimensions } from '../utilities/useWindowDimensions';
+import { Pokemon } from "./Pokemon";
 
 export function BattleField(){
 
@@ -9,18 +10,24 @@ export function BattleField(){
         return(
             <div className="battleFieldContainer">
                 <div className="battleGrid">
-                    <div className="item topLeft">TopLeft</div>   
-                    <div className="item rivalScore">RivalScore</div>
-                    <div className="item topRight">TopRight</div>
-                    <div className="item midLeft1">midLeft1</div>
-                    <div className="item mid1">mid1</div>
-                    <div className="item midRight1">midRight1</div>
-                    <div className="item midLeft2">midLeft2</div>
-                    <div className="item mid2">mid2</div>
-                    <div className="item midRight2">midRight2</div>
-                    <div className="item bottomLeft">BottomLeft</div>
-                    <div className="item playerScore">playerScore</div>
-                    <div className="item bottomRight">BottomRight</div>
+                    <div className="topLeft">TopLeft</div>   
+                    <div className="rivalScore">RivalScore</div>
+                    <div className="topRight">
+                        <Pokemon/>
+                    </div>
+                    <div className="midLeft1">midLeft1</div>
+                    <div className="mid1">mid1</div>
+                    <div className="midRight1">midRight1</div>
+                    <div className="midLeft2">
+                        <Pokemon/>
+                    </div>
+                    <div className="mid2">mid2</div>
+                    <div className="midRight2">midRight2</div>
+                    <div className="bottomLeft">
+                 
+                    </div>
+                    <div className="playerScore">playerScore</div>
+                    <div className="bottomRight">BottomRight</div>
                 </div>
             </div>       
         )     
@@ -28,10 +35,14 @@ export function BattleField(){
         return (
             <div className="battleFieldContainer">
             <div className="battleGridSmall">
-            <div className="itemSmall rivalScore">RivalScore</div>
-            <div className="itemSmall rivalPokemon">RivalPokemon</div>
-            <div className="itemSmall playerPokemon">PlayerPokemon</div>
-            <div className="itemSmall playerScore">playerScore</div>
+            <div className="rivalScore">RivalScore</div>
+            <div className="rivalPokemon">
+            <Pokemon/>
+            </div>
+            <div className="playerPokemon">
+            <Pokemon/>
+            </div>
+            <div className="playerScore" >playerScore</div>
   
             </div>
         </div>       
