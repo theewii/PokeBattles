@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+    width="305" 
+    height="277">
+        <path fill="none" 
+        stroke="#000" 
+        stroke-width="15" 
+        d="M 50,5 95,97.5 5,97.5 z" opacity=".2"/>
+</svg>
