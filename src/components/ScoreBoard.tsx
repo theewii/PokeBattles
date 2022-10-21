@@ -1,5 +1,16 @@
+import { Container } from "react-bootstrap";
+import "./ScoreBoard.css";
+
 export function ScoreBoard(){
     return(
-        <h1>hei!</h1>
+        <div className="paper">
+            <Container className="p-2">
+       
+                <h2>Player</h2>
+                <h3>Score</h3>
+ 
+
+            </Container>
+        </div>
     )
 }

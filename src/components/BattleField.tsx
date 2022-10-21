@@ -1,6 +1,7 @@
 import "./BattleField.css"; 
 import { useWindowDimensions } from '../utilities/useWindowDimensions';
 import { Pokemon } from "./Pokemon";
+import { ScoreBoard } from "./ScoreBoard";
 
 export function BattleField(){
 
@@ -11,7 +12,9 @@ export function BattleField(){
             <div className="battleFieldContainer">
                 <div className="battleGrid">
                     <div className="topLeft">TopLeft</div>   
-                    <div className="rivalScore">RivalScore</div>
+                    <div className="rivalScore">
+                        <ScoreBoard/>
+                    </div>
                     <div className="topRight">
                         <Pokemon/>
                     </div>
@@ -26,7 +29,9 @@ export function BattleField(){
                     <div className="bottomLeft">
                  
                     </div>
-                    <div className="playerScore">playerScore</div>
+                    <div className="playerScore">
+                        <ScoreBoard/>
+                    </div>
                     <div className="bottomRight">BottomRight</div>
                 </div>
             </div>       
@@ -34,17 +39,21 @@ export function BattleField(){
     } else {
         return (
             <div className="battleFieldContainer">
-            <div className="battleGridSmall">
-            <div className="rivalScore">RivalScore</div>
-            <div className="rivalPokemon">
-            <Pokemon/>
-            </div>
-            <div className="playerPokemon">
-            <Pokemon/>
-            </div>
-            <div className="playerScore" >playerScore</div>
-  
-            </div>
+                <div className="battleGridSmall">
+                    <div className="rivalScore">
+                        <ScoreBoard/>
+                    </div>
+                    <div className="rivalPokemon">
+                        <Pokemon/>
+                    </div>
+                    <div className="playerPokemon">
+                        <Pokemon/>
+                    </div>
+                    <div className="playerScore" >
+                        <ScoreBoard/>
+                    </div>
+    
+                </div>
         </div>       
             )
     }

@@ -107,6 +107,7 @@
 }
 
 .playerScore {
+    align-self: end;
     grid-area: playerScore;
 }
 
