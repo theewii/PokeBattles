@@ -1,0 +1,51 @@
+[
+    {
+        "id": 0, 
+        "name": "Venusaur",
+        "type" : "grass", 
+        "imageUrl":"/images/Venusaur.png"
+    }, 
+    {
+        "id": 1, 
+        "name": "Blastoise",
+        "type" : "water", 
+        "imageUrl":"/images/Blastoise.png"
+    }, 
+    {
+        "id": 2, 
+        "name": "Charizard",
+        "type" : "fire", 
+        "imageUrl":"/images/Charizard.png"
+    }, 
+    {
+        "id": 3, 
+        "name": "Ampharos",
+        "type" : "electric", 
+        "imageUrl":"/images/Ampharos.png"
+    }, 
+    {
+        "id": 4, 
+        "name": "Sandslash",
+        "type" : "ground", 
+        "imageUrl":"/images/Sandslash.png"
+    }, 
+    {
+        "id": 5, 
+        "name": "Alakazam",
+        "type" : "psychic", 
+        "imageUrl":"/images/Alakazam.png"
+    }, 
+    {
+        "id": 6, 
+        "name": "Machoke",
+        "type" : "fighting", 
+        "imageUrl":"/images/Machoke.png"
+    }, 
+    {
+        "id": 7, 
+        "name": "Umbreon",
+        "type" : "dark", 
+        "imageUrl":"/images/Umbreon.png"
+    }
+
+]
