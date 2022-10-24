@@ -16,7 +16,7 @@ const useRivalPokemon = () => {
   const {state, dispatch} = useContext(Context); 
 
   const setRivalPokemon = (rivalPokemon) => {
-    
+
     dispatch({data: {rivalPokemon}})
   }
 

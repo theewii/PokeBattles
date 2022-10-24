@@ -3,9 +3,9 @@ import pokeTypes  from "../data/pokeTypes.json";
 
 const selectScore = (state) => state.score; 
 
-const selectPlayerPokemon = (state) => Pokemon.find(({id}) => id === state.playerPokemon);  
+const selectPlayerPokemon = (state) => Pokemon.find(({id}) => id === state.playerPokemon) || null;  
 
-const selectRivalPokemon = (state) => Pokemon.find(({id}) => id === state.rivalPokemon); 
+const selectRivalPokemon = (state) => Pokemon.find(({id}) => id === state.rivalPokemon) || null; 
 
 const selectPokeType = (state) => pokeTypes.find(({type}) => type === state.type); 
 

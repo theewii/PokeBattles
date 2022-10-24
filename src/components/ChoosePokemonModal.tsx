@@ -13,8 +13,6 @@ export default function ChoosePokemonModal() {
 
   const [playerPokemon, setPlayerPokemon] = usePlayerPokemon(); 
 
-  const [rivalPokemon, setRivalPokemon] = useRivalPokemon(); 
-
   const [venusaur, blastoise, charizard ] = Pokemon; 
 
   return (

@@ -1,14 +1,32 @@
 import "./BattleField.css"; 
 import { useWindowDimensions } from '../utilities/useWindowDimensions';
-import { Pokemon } from "./Pokemon";
 import { ScoreBoard } from "./ScoreBoard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import pokeTypes from "../data/pokeTypes.json"; 
 import { Button } from "react-bootstrap";
 import GameArea from "./GameArea";
-
+import PokemonData from "../data/pokemon.json";
+import { usePlayerPokemon, useRivalPokemon } from "../hooks/hooks";
+import { Pokemon } from "./Pokemon";
 export function BattleField(){
 
+    const [playerPokemon] = usePlayerPokemon(); 
+
+
+    const [venusaur, blastoise, charizard ] = PokemonData; 
+
+    const [rivalPokemon, setRivalPokemon]  = useRivalPokemon(); 
+
+      //hver gang playerpokemon endrer seg skal jeg kjøre denne
+      //her kan jeg potensielt legge på en delay for å kjøre en animasjon :) 
+    useEffect(() => {
+        if(playerPokemon === null){
+            return; 
+        }
+        const randomPokemon = [venusaur, blastoise, charizard].at(Math.floor(Math.random() * 3)); 
+        console.log(randomPokemon)
+        setRivalPokemon(randomPokemon?.id); 
+    }, [playerPokemon]); 
     var dimensions = useWindowDimensions(); 
 
     if(dimensions.width > 414){
@@ -21,7 +39,7 @@ export function BattleField(){
                         <ScoreBoard/>
                     </div>
                     <div className="topRight">
-                        <Pokemon/>
+                        <Pokemon pokemonData={rivalPokemon}/>
                     </div>
                     <div className="midLeft1">midLeft1</div>
                     <div className="mid1">
@@ -29,7 +47,7 @@ export function BattleField(){
                     </div>
                     <div className="midRight1">midRight1</div>
                     <div className="midLeft2">
-                        <Pokemon/>
+                        <Pokemon pokemonData={playerPokemon}/>
                     </div>
                     <div className="mid2"></div>
                     <div className="midRight2">midRight2</div>
@@ -51,13 +69,13 @@ export function BattleField(){
                         <ScoreBoard/>
                     </div>
                     <div className="rivalPokemon">
-                        <Pokemon/>
+                        <Pokemon pokemonData={rivalPokemon}/>
                     </div>
                     <div className="gameArea">
                         <GameArea/>
                     </div>
                     <div className="playerPokemon">
-                        <Pokemon/>
+                        <Pokemon pokemonData={playerPokemon}/>
                     </div>
                     <div className="playerScore" >
                         <ScoreBoard/>
