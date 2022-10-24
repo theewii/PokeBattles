@@ -4,56 +4,56 @@
         "type" : "grass", 
         "weakAgainst": ["fire"], 
         "strongAgainst": ["water, ground"],
-        "icon":"finnikon!"
+        "icon":"/images/GrassIcon.png"
     }, 
     {
         "id": 1, 
         "type" : "water", 
         "weakAgainst": ["electric, grass"], 
         "strongAgainst": ["fire, ground"],
-        "icon":"finnikon!"
+        "icon":"/images/WaterIcon.png"
     }, 
     {
         "id": 2, 
         "type" : "fire", 
         "weakAgainst": ["water"], 
         "strongAgainst": ["grass"],
-        "icon":"finnikon!"
+        "icon":"/images/FireIcon.png"
     }, 
     {
         "id": 3, 
         "type" : "electric", 
         "weakAgainst": ["ground"], 
         "strongAgainst": ["water"],
-        "icon":"finnikon!"
+        "icon":"/images/ElectricIcon.png"
     }, 
     {
         "id": 4, 
         "type" : "ground", 
         "weakAgainst": ["water"], 
         "strongAgainst": ["electric"],
-        "icon":"finnikon!"
+        "icon":"/images/GroundIcon.png"
     },
     {
         "id": 5, 
         "type" : "psychic", 
         "weakAgainst": ["dark"], 
         "strongAgainst": ["fighting"],
-        "icon":"finnikon!"
+        "icon":"/images/PsychicIcon.png"
     },     
     {
         "id": 6, 
         "type" : "fighting", 
         "weakAgainst": ["psychic"], 
         "strongAgainst": ["dark"],
-        "icon":"finnikon!"
+        "icon":"/images/FightingIcon.png"
     },    
     {
         "id": 7, 
         "type" : "dark", 
         "weakAgainst": ["fighting"], 
         "strongAgainst": ["psychic"],
-        "icon":"finnikon!"
+        "icon":"/images/DarkIcon.png"
     }
     
 
