@@ -2,6 +2,22 @@ import "./BattleField.css";
 import { useWindowDimensions } from '../utilities/useWindowDimensions';
 import { Pokemon } from "./Pokemon";
 import { ScoreBoard } from "./ScoreBoard";
+import { useState } from "react";
+import types from "../data/types.json"; 
+import { Button } from "react-bootstrap";
+
+const USERS ={
+    PLAYER: "Player", 
+    RIVAL: "Rival"
+}
+
+type PokemonType = {
+    id: number; 
+    type: string;
+    weakAgainst: Array<string>; 
+    strongAgainst: Array<string>; 
+    icon: string; 
+}
 
 export function BattleField(){
 
@@ -11,18 +27,19 @@ export function BattleField(){
         return(
             <div className="battleFieldContainer">
                 <div className="battleGrid">
-                    <div className="topLeft">TopLeft</div>   
+                    <div className="topLeft">TopLeft
+                        </div>   
                     <div className="rivalScore">
                         <ScoreBoard/>
                     </div>
                     <div className="topRight">
-                        <Pokemon/>
+                        <Pokemon user={USERS.RIVAL}/>
                     </div>
                     <div className="midLeft1">midLeft1</div>
                     <div className="mid1">mid1</div>
                     <div className="midRight1">midRight1</div>
                     <div className="midLeft2">
-                        <Pokemon/>
+                        <Pokemon user={USERS.PLAYER}/>
                     </div>
                     <div className="mid2">mid2</div>
                     <div className="midRight2">midRight2</div>
@@ -44,10 +61,10 @@ export function BattleField(){
                         <ScoreBoard/>
                     </div>
                     <div className="rivalPokemon">
-                        <Pokemon/>
+                        <Pokemon user={USERS.RIVAL}/>
                     </div>
                     <div className="playerPokemon">
-                        <Pokemon/>
+                        <Pokemon user={USERS.PLAYER}/>
                     </div>
                     <div className="playerScore" >
                         <ScoreBoard/>
