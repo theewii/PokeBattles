@@ -46,31 +46,35 @@ export function BattleField(){
         return(
             <div className="battleFieldContainer">
                 <div className="battleGrid">
-                    <div className="topLeft">TopLeft
+                    <div className="topLeft">
                         </div>   
                     <div className="rivalScore">
-                        <ScoreBoard score={rivalScore}/>
+                        <ScoreBoard 
+                        score={rivalScore}
+                        user={"Rival"}/>
                     </div>
                     <div className="topRight">
                         <Pokemon pokemonData={rivalPokemon}/>
                     </div>
-                    <div className="midLeft1">midLeft1</div>
+                    <div className="midLeft1"></div>
                     <div className="mid1">
                         <GameArea/>
                     </div>
-                    <div className="midRight1">midRight1</div>
+                    <div className="midRight1"></div>
                     <div className="midLeft2">
                         <Pokemon pokemonData={playerPokemon}/>
                     </div>
                     <div className="mid2"></div>
-                    <div className="midRight2">midRight2</div>
+                    <div className="midRight2"></div>
                     <div className="bottomLeft">
                  
                     </div>
                     <div className="playerScore">
-                        <ScoreBoard score={playerScore}/>
+                        <ScoreBoard 
+                        user={"Player"}
+                        score={playerScore}/>
                     </div>
-                    <div className="bottomRight">BottomRight</div>
+                    <div className="bottomRight"></div>
                 </div>
             </div>       
         )     

@@ -1,0 +1,68 @@
+.selectPokemonButton {
+
+}
+
+.image{
+    object-fit: cover;
+    width: 100%;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2;
+    justify-items: center;
+    grid-template-areas: 
+    "type1 type2 type3"
+    "typeIcon1 typeIcon2 typeIcon3"
+    "header1 header2 header3"
+    "pokemon1 pokemon2 pokemon3";
+}
+
+.type1{
+    grid-area: type1;
+}
+.type2{
+    grid-area: type2;
+}
+.type3{
+    grid-area: type3;
+}
+
+.iconImage {
+    object-fit: cover;
+    width: 8em;
+}
+
+.header1{
+    grid-area:header1; 
+}
+.header2{
+    grid-area:header2; 
+}
+.header3{
+    grid-area:header3; 
+}
+
+.typeIcon1{
+    grid-area:typeIcon1; 
+}
+.typeIcon2{
+    grid-area:typeIcon2; 
+}
+.typeIcon3{
+    grid-area:typeIcon3; 
+}
+
+.pokemon1{
+    grid-area: pokemon1;
+}
+
+.pokemon2{
+    grid-area: pokemon2;
+}
+
+.pokemon3{
+    grid-area: pokemon3;
+}
+
