@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { usePlayerPokemon } from '../hooks/hooks';
+import { usePlayerPokemon, useRivalPokemon} from '../hooks/hooks';
 
 import Pokemon from "../data/pokemon.json";
 
@@ -13,10 +13,9 @@ export default function ChoosePokemonModal() {
 
   const [playerPokemon, setPlayerPokemon] = usePlayerPokemon(); 
 
-  const [venusaur, blastoise, charizard ] = Pokemon; 
+  const [rivalPokemon, setRivalPokemon] = useRivalPokemon(); 
 
-  //hver gang playerpokemon endrer seg skal jeg kjøre denne
-  useEffect(() => {console.log(playerPokemon)}, [playerPokemon]);
+  const [venusaur, blastoise, charizard ] = Pokemon; 
 
   return (
     <>
@@ -30,15 +29,15 @@ export default function ChoosePokemonModal() {
           <Modal.Title>Choose pokemon!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <button onClick={() => setPlayerPokemon(venusaur.id)} style={{display: "flex"}}>
+            <button onClick={() => {setPlayerPokemon(venusaur.id); handleClose()}} style={{display: "flex"}}>
             <span>{venusaur.name}</span>
                 <img src={venusaur.imageUrl}/>
             </button>
-            <button onClick={() => setPlayerPokemon(blastoise.id)}  style={{display: "flex"}}>
+            <button onClick={() => {setPlayerPokemon(blastoise.id); handleClose()}}  style={{display: "flex"}}>
             <span>{blastoise.name}</span>
                 <img src={blastoise.imageUrl}/>
             </button>
-            <button onClick={() => setPlayerPokemon(charizard.id)}  style={{display: "flex"}}>
+            <button onClick={() => {setPlayerPokemon(charizard.id); handleClose()}}  style={{display: "flex"}}>
                 <span>{charizard.name}</span>
                 <img src={charizard.imageUrl}/>
             </button>
