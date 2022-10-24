@@ -40,13 +40,9 @@
     grid-template-areas: 
     "rivalScore"
     "rivalPokemon"
+    "gameArea"
     "playerPokemon"
-    "playerScore"
-    
-}
-
-.itemSmall {
-    height:10.4rem;
+    "playerScore"   
 }
 
 .rivalPokemon {
@@ -57,11 +53,10 @@
     grid-area: playerPokemon;
 }
 
-
-
-.item {
-
+.gameArea {
+    grid-area: gameArea; 
 }
+
 .topLeft{
     grid-area: topLeft;
 }
@@ -82,6 +77,8 @@
 
 .mid1 {
     grid-area: mid1;
+    grid-row-start: mid1; 
+    grid-row-end: mid2; 
 }
 
 .midRight1 {

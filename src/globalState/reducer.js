@@ -1,7 +1,8 @@
-const initialState = {
+export const initialState = {
     score: 0, 
     playerPokemon: null, 
     rivalPokemon: null, 
+    ruleset: null, 
 }
 
 const reducer = (state = initialState, action) => {
@@ -11,7 +12,5 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export {
-  reducer,
-  initialState
-}
+export default reducer;
+ 
