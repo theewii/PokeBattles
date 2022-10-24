@@ -6,16 +6,23 @@ import pokeTypes from "../data/pokeTypes.json";
 import { Button } from "react-bootstrap";
 import GameArea from "./GameArea";
 import PokemonData from "../data/pokemon.json";
-import { usePlayerPokemon, useRivalPokemon } from "../hooks/hooks";
+import { usePlayerPokemon, useRivalPokemon, useRound, usePlayerScore, useRivalScore, useIsChoosingPokemon } from "../hooks/hooks";
 import { Pokemon } from "./Pokemon";
 export function BattleField(){
 
-    const [playerPokemon] = usePlayerPokemon(); 
+    useRound(); 
 
+    const [ playerScore ] = usePlayerScore();
+
+    const [rivalScore] = useRivalScore(); 
+
+    const [playerPokemon] = usePlayerPokemon(); 
 
     const [venusaur, blastoise, charizard ] = PokemonData; 
 
     const [rivalPokemon, setRivalPokemon]  = useRivalPokemon(); 
+
+    const [isChoosingPokemon, setIsChoosingPokemon] = useIsChoosingPokemon(); 
 
       //hver gang playerpokemon endrer seg skal jeg kjøre denne
       //her kan jeg potensielt legge på en delay for å kjøre en animasjon :) 
@@ -23,10 +30,16 @@ export function BattleField(){
         if(playerPokemon === null){
             return; 
         }
+        if(!isChoosingPokemon && rivalPokemon === null){
+            setIsChoosingPokemon(true); 
+            return; 
+        }
         const randomPokemon = [venusaur, blastoise, charizard].at(Math.floor(Math.random() * 3)); 
         console.log(randomPokemon)
         setRivalPokemon(randomPokemon?.id); 
-    }, [playerPokemon]); 
+        setIsChoosingPokemon(false)
+    }, [playerPokemon, isChoosingPokemon]); 
+
     var dimensions = useWindowDimensions(); 
 
     if(dimensions.width > 414){
@@ -36,7 +49,7 @@ export function BattleField(){
                     <div className="topLeft">TopLeft
                         </div>   
                     <div className="rivalScore">
-                        <ScoreBoard/>
+                        <ScoreBoard score={rivalScore}/>
                     </div>
                     <div className="topRight">
                         <Pokemon pokemonData={rivalPokemon}/>
@@ -55,7 +68,7 @@ export function BattleField(){
                  
                     </div>
                     <div className="playerScore">
-                        <ScoreBoard/>
+                        <ScoreBoard score={playerScore}/>
                     </div>
                     <div className="bottomRight">BottomRight</div>
                 </div>

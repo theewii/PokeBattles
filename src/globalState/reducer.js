@@ -1,8 +1,10 @@
 export const initialState = {
-    score: 0, 
+    playerScore: 0,
+    rivalScore: 0,  
     playerPokemon: null, 
     rivalPokemon: null, 
     ruleset: null, 
+    isChoosingPokemon: false
 }
 
 const reducer = (state = initialState, action) => {

@@ -13,6 +13,8 @@ export default function ChoosePokemonModal() {
 
   const [playerPokemon, setPlayerPokemon] = usePlayerPokemon(); 
 
+  const [rivalPokemon, setRivalPokemon] = useRivalPokemon(); 
+
   const [venusaur, blastoise, charizard ] = Pokemon; 
 
   return (
@@ -27,15 +29,15 @@ export default function ChoosePokemonModal() {
           <Modal.Title>Choose pokemon!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <button onClick={() => {setPlayerPokemon(venusaur.id); handleClose()}} style={{display: "flex"}}>
+            <button onClick={() => {setRivalPokemon(null); setPlayerPokemon(venusaur.id); handleClose()}} style={{display: "flex"}}>
             <span>{venusaur.name}</span>
                 <img src={venusaur.imageUrl}/>
             </button>
-            <button onClick={() => {setPlayerPokemon(blastoise.id); handleClose()}}  style={{display: "flex"}}>
+            <button onClick={() => {setRivalPokemon(null); setPlayerPokemon(blastoise.id); handleClose()}}  style={{display: "flex"}}>
             <span>{blastoise.name}</span>
                 <img src={blastoise.imageUrl}/>
             </button>
-            <button onClick={() => {setPlayerPokemon(charizard.id); handleClose()}}  style={{display: "flex"}}>
+            <button onClick={() => {setRivalPokemon(null); setPlayerPokemon(charizard.id); handleClose()}}  style={{display: "flex"}}>
                 <span>{charizard.name}</span>
                 <img src={charizard.imageUrl}/>
             </button>
