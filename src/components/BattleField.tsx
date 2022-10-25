@@ -4,10 +4,12 @@ import { ScoreBoard } from "./ScoreBoard";
 import { useEffect, useState } from "react";
 import pokeTypes from "../data/pokeTypes.json"; 
 import { Button } from "react-bootstrap";
-import GameArea from "./GameArea";
 import PokemonData from "../data/pokemon.json";
-import { usePlayerPokemon, useRivalPokemon, useRound, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomtRuleSet } from "../hooks/hooks";
+// @ts-ignore
+import { usePlayerPokemon, useRivalPokemon, useRound, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomRuleSet } from "../hooks/hooks";
 import { Pokemon } from "./Pokemon";
+import ChoosePokemonModal from "./ChoosePokemonModal";
+
 export function BattleField(){
 
     useRound(); 
@@ -20,9 +22,6 @@ export function BattleField(){
     
     //se om jeg får gjort noe med denne
     const [defaultRuleSet] = useDefaultRuleSet(); 
-    console.log(defaultRuleSet); 
-
-    const [venusaur, blastoise, charizard ] = PokemonData; 
 
     const [rivalPokemon, setRivalPokemon]  = useRivalPokemon(); 
 
@@ -38,11 +37,10 @@ export function BattleField(){
             setIsChoosingPokemon(true); 
             return; 
         }
-        const randomPokemon = [venusaur, blastoise, charizard].at(Math.floor(Math.random() * 3)); 
-        console.log(randomPokemon)
+        const randomPokemon = defaultRuleSet[Math.floor(Math.random() * defaultRuleSet.length)]; 
         setRivalPokemon(randomPokemon?.id); 
         setIsChoosingPokemon(false)
-    }, [playerPokemon, isChoosingPokemon]); 
+    }, [playerPokemon, rivalPokemon, isChoosingPokemon]); 
 
     var dimensions = useWindowDimensions(); 
 
@@ -58,15 +56,15 @@ export function BattleField(){
                         user={"Rival"}/>
                     </div>
                     <div className="topRight">
-                        <Pokemon pokemonData={rivalPokemon}/>
+                        <Pokemon pokemonData={rivalPokemon} cssClassName={"pokemonBigScreen"}/>
                     </div>
                     <div className="midLeft1"></div>
                     <div className="mid1">
-                        <GameArea/>
+                        <ChoosePokemonModal cssClassName={"playButtonBigScreen"}/>
                     </div>
                     <div className="midRight1"></div>
                     <div className="midLeft2">
-                        <Pokemon pokemonData={playerPokemon}/>
+                        <Pokemon pokemonData={playerPokemon} cssClassName={"pokemonBigScreen"}/>
                     </div>
                     <div className="mid2"></div>
                     <div className="midRight2"></div>
@@ -87,19 +85,23 @@ export function BattleField(){
             <div className="battleFieldContainer">
                 <div className="battleGridSmall">
                     <div className="rivalScore">
-                        <ScoreBoard/>
+                        <ScoreBoard
+                         score={rivalScore}
+                         user={"Rival"}/>
                     </div>
                     <div className="rivalPokemon">
-                        <Pokemon pokemonData={rivalPokemon}/>
+                        <Pokemon pokemonData={rivalPokemon} cssClassName={"pokemonSmallScreen"}/>
                     </div>
                     <div className="gameArea">
-                        <GameArea/>
+                        <ChoosePokemonModal cssClassName={"playButtonSmallScreen"}/>
                     </div>
                     <div className="playerPokemon">
-                        <Pokemon pokemonData={playerPokemon}/>
+                        <Pokemon pokemonData={playerPokemon} cssClassName={"pokemonSmallScreen"}/>
                     </div>
                     <div className="playerScore" >
-                        <ScoreBoard/>
+                        <ScoreBoard
+                         user={"Player"}
+                         score={playerScore}/>
                     </div>
     
                 </div>
