@@ -21,7 +21,6 @@ export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}
   const [defaultRuleSet] = useDefaultRuleSet(); 
 
   const [venusaur, blastoise, charizard ] = Pokemon; 
-  const [isChoosingPokemon, setIsChoosingPokemon] = useIsChoosingPokemon(); 
 
   function capitalizeFirstLetter(pokeType : string){
     return pokeType.charAt(0).toUpperCase() + pokeType.slice(1); 
