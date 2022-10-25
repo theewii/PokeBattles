@@ -29,7 +29,7 @@ export function BattleField(){
 
     useEffect(() => {
         setIsChoosingPokemon(true);
-        setTimeout(setIsChoosingPokemon, 3000, false); 
+        setTimeout(setIsChoosingPokemon, 300000, false); 
 
     }, [playerPokemon, rivalPokemon]) 
 
@@ -47,13 +47,13 @@ export function BattleField(){
                         user={"Rival"}/>
                     </div>
                     <div className="topRight">
-                       {isChoosingPokemon &&
-                          <div className="pulse-base"></div>
-                       }
-                       {!isChoosingPokemon &&
-                       <Pokemon pokemonData={rivalPokemon} cssClassName={"pokemonBigScreen"}/>
-                       }
-                        
+                       {isChoosingPokemon ?
+                          <div className="pulse-base">
+                            <img style={{objectFit: "cover", width:"13em"}}src="./Images/Pokeball.png"></img>
+                          </div>
+                       :
+                        <Pokemon pokemonData={rivalPokemon} cssClassName={"pokemonBigScreen"}/>
+                        }   
                     </div>
                     <div className="midLeft1"></div>
                     <div className="mid1">
@@ -61,10 +61,14 @@ export function BattleField(){
                     </div>
                     <div className="midRight1"></div>
                     <div className="midLeft2">
-                    {isChoosingPokemon &&
-                        <div>JEG VELGER POKEMON</div>
-                       }
-                        <Pokemon pokemonData={playerPokemon} cssClassName={"pokemonBigScreen"}/>
+                    {isChoosingPokemon ?
+                          <div className="pulse-base">
+                          <img style={{objectFit: "cover", width:"13em"}}src="./Images/Pokeball.png"></img>
+                        </div>
+                    :
+                    <Pokemon pokemonData={playerPokemon} cssClassName={"pokemonBigScreen"}/>
+                    }
+                       
                     </div>
                     <div className="mid2"></div>
                     <div className="midRight2"></div>
