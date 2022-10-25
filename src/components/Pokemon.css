@@ -1,0 +1,19 @@
+.pokemonBigScreen{
+    object-fit: cover;
+    width: 25em;
+}
+
+.pokemonSmallScreen{
+    object-fit:cover; 
+    width: 15em; 
+}
+
+.playButtonBigScreen {
+    object-fit:cover; 
+    width: 12em; 
+}
+
+.playButtonSmallScreen {
+    object-fit:cover; 
+    width: 5em; 
+}

@@ -1,6 +1,6 @@
 import Context from "../globalState/context"; 
 import { useContext, useEffect } from "react";
-import { selectPlayerPokemon, selectRivalPokemon, selectRoundWinner, selectPlayerScore, selectRivalScore, selectIsChoosingPokemon, selectCustomRuleSet, selectDefaultRuleSet, selectIsUsingCustomRuleSet } from "../globalState/selectors";
+import { selectPlayerPokemon, selectRivalPokemon, selectRoundWinner, selectPlayerScore, selectRivalScore, selectIsChoosingPokemon, selectCustomRuleSet, selectDefaultRuleSet, selectIsUsingCustomRuleSet, selectWinner } from "../globalState/selectors";
 
 const usePlayerPokemon = () => {
     const { state, dispatch } = useContext(Context);
@@ -57,6 +57,7 @@ const useRound = () => {
     if(playerPokemon === null || rivalPokemon === null || isChoosingPokemon){
       return; 
     }
+    debugger;
     if(selectRoundWinner(state) === "player"){
         setPlayerScore(playerScore + 1); 
     }if(selectRoundWinner(state) === "rival"){
@@ -70,7 +71,21 @@ const useRound = () => {
 
 const useBattle = () => {
     const [rivalScore] = useRivalScore(); 
-    const [playerScore] = usePlayerScore(); 
+    const [playerScore] = usePlayerScore();
+    
+    const {state} = useContext(Context); 
+
+    useEffect(() => {
+
+      if(selectWinner() == "player"){
+        //ett eller annet
+      }else {
+        //noe annet
+      }
+
+  },     
+  [playerScore, rivalScore])
+  
 }
 
 const usePlayerScore = () => {

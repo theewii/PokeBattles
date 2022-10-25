@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import "./Pokemon.css"; 
+// @ts-ignore
 import { usePlayerPokemon, useRivalPokemon} from '../hooks/hooks';
 import "./ChoosePokemon.css"; 
 
 import Pokemon from "../data/pokemon.json";
 
-export default function ChoosePokemonModal() {
+export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -23,11 +25,12 @@ export default function ChoosePokemonModal() {
   }
 
 
+
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="secondary" onClick={handleShow}>
       <h3 className="mt-1">Play Game!</h3>
-    <img style={{objectFit:"cover", width: "15em"}} src="./Images/Pokeball.png"></img>
+        <img className={cssClassName} src="./Images/Pokeball.png"></img>
       </Button>
 
       <Modal size="xl"show={show} onHide={handleClose}>

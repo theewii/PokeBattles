@@ -17,6 +17,7 @@ const selectRoundWinner = (state)  => {
     const playerPokemonType = selectPlayerPokemonType(state); 
     const rivalPokemonType = selectRivalPokemonType(state); 
 
+    debugger;
     if(playerPokemonType.strongAgainst.includes(rivalPokemonType.type)){
         return "player"
     }
@@ -24,7 +25,6 @@ const selectRoundWinner = (state)  => {
         return "rival"
     }
     return "draw"
-
 }
 
 const selectCustomRuleSet = (state) => {
@@ -35,6 +35,14 @@ const selectCustomRuleSet = (state) => {
     //TODO: HER SKAL DU RETURNERE DET NYE EVENTUELT
     return state.defaultRuleSet;
     
+}
+
+const selectWinner = (state) => {
+    if(state.playerScore === 2){
+        return "player"; 
+    }if(state.rivalScore === 2){
+        return "rival"
+    }
 }
 
 const selectDefaultRuleSet = (state) => {
@@ -75,5 +83,6 @@ export {
     selectPokeType, 
     selectRoundWinner, 
     selectCustomRuleSet, 
-    selectDefaultRuleSet
+    selectDefaultRuleSet, 
+    selectWinner
 }
