@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "./Pokemon.css"; 
 // @ts-ignore
-import { usePlayerPokemon, useRivalPokemon} from '../hooks/hooks';
+import { usePlayerPokemon, useRivalPokemon, useDefaultRuleSet, useIsChoosingPokemon} from '../hooks/hooks';
 import "./ChoosePokemon.css"; 
 
 import Pokemon from "../data/pokemon.json";
@@ -18,13 +18,23 @@ export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}
 
   const [rivalPokemon, setRivalPokemon] = useRivalPokemon(); 
 
+  const [defaultRuleSet] = useDefaultRuleSet(); 
+
   const [venusaur, blastoise, charizard ] = Pokemon; 
+  const [isChoosingPokemon, setIsChoosingPokemon] = useIsChoosingPokemon(); 
 
   function capitalizeFirstLetter(pokeType : string){
     return pokeType.charAt(0).toUpperCase() + pokeType.slice(1); 
   }
 
+  useEffect(() => {
+    if(playerPokemon === null){
+        return; 
+    }
 
+    const randomPokemon = defaultRuleSet[Math.floor(Math.random() * defaultRuleSet.length)]; 
+    setRivalPokemon(randomPokemon?.id); 
+  }, [playerPokemon])
 
   return (
     <>
@@ -67,17 +77,17 @@ export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}
                     <h2>{charizard.name}</h2>
                 </div>
                 <div className="pokemon1">
-                    <button onClick={() => {setRivalPokemon(null); setPlayerPokemon(venusaur.id); handleClose()}}>
+                    <button onClick={() => {setPlayerPokemon(venusaur.id); handleClose()}}>
                         <img className="image" src={venusaur.imageUrl}/>
                     </button>
                 </div>
                 <div className="pokemon2">
-                    <button onClick={() => {setRivalPokemon(null); setPlayerPokemon(blastoise.id); handleClose()}}>
+                    <button onClick={() => {setPlayerPokemon(blastoise.id); handleClose()}}>
                         <img className="image" src={blastoise.imageUrl}/>
                 </button>
                 </div>
                 <div className="pokemon3">
-                    <button onClick={() => {setRivalPokemon(null); setPlayerPokemon(charizard.id); handleClose()}}>
+                    <button onClick={() => {setPlayerPokemon(charizard.id); handleClose()}}>
                         <img  className="image"  src={charizard.imageUrl}/>
                     </button>
                 </div>

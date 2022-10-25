@@ -17,7 +17,6 @@ const selectRoundWinner = (state)  => {
     const playerPokemonType = selectPlayerPokemonType(state); 
     const rivalPokemonType = selectRivalPokemonType(state); 
 
-    debugger;
     if(playerPokemonType.strongAgainst.includes(rivalPokemonType.type)){
         return "player"
     }

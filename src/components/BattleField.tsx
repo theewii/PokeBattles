@@ -12,8 +12,8 @@ import ChoosePokemonModal from "./ChoosePokemonModal";
 
 export function BattleField(){
 
-    useRound(); 
 
+    useRound(); 
     const [ playerScore ] = usePlayerScore();
 
     const [rivalScore] = useRivalScore(); 
@@ -23,13 +23,13 @@ export function BattleField(){
     //se om jeg får gjort noe med denne
     const [defaultRuleSet] = useDefaultRuleSet(); 
 
-    const [rivalPokemon, setRivalPokemon]  = useRivalPokemon(); 
+    const [rivalPokemon]  = useRivalPokemon(); 
 
     const [isChoosingPokemon, setIsChoosingPokemon] = useIsChoosingPokemon(); 
 
       //hver gang playerpokemon endrer seg skal jeg kjøre denne
       //her kan jeg potensielt legge på en delay for å kjøre en animasjon :) 
-    useEffect(() => {
+    /*useEffect(() => {
         if(playerPokemon === null){
             return; 
         }
@@ -40,7 +40,7 @@ export function BattleField(){
         const randomPokemon = defaultRuleSet[Math.floor(Math.random() * defaultRuleSet.length)]; 
         setRivalPokemon(randomPokemon?.id); 
         setIsChoosingPokemon(false)
-    }, [playerPokemon, rivalPokemon, isChoosingPokemon]); 
+    }, [ isChoosingPokemon]); */
 
     var dimensions = useWindowDimensions(); 
 

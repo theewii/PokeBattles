@@ -45,8 +45,7 @@ const useIsUsingCustomRuleSet = () => {
 
 const useRound = () => {
   const [playerPokemon] = usePlayerPokemon(); 
-  const [rivalPokemon] = useRivalPokemon(); 
-  const [isChoosingPokemon] = useIsChoosingPokemon();  
+  const [rivalPokemon] = useRivalPokemon();  
   const [playerScore, setPlayerScore] = usePlayerScore(); 
   const [rivalScore, setRivalScore] = useRivalScore(); 
 
@@ -54,10 +53,10 @@ const useRound = () => {
 
   useEffect(() => {
 
-    if(playerPokemon === null || rivalPokemon === null || isChoosingPokemon){
+    if(playerPokemon === null || rivalPokemon === null){
       return; 
     }
-    debugger;
+
     if(selectRoundWinner(state) === "player"){
         setPlayerScore(playerScore + 1); 
     }if(selectRoundWinner(state) === "rival"){
@@ -65,7 +64,7 @@ const useRound = () => {
     }
 
   },     
-  [playerPokemon, rivalPokemon, isChoosingPokemon])
+  [playerPokemon, rivalPokemon])
   
 }
 
