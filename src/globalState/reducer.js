@@ -8,7 +8,7 @@ export const initialState = {
     ruleset: null, 
     isChoosingPokemon: false, 
     defaultRuleSet: [], 
-    currentRuleSet: [], 
+    customRuleSet: [], 
     isUsingCustomRuleSet: false
 }
 

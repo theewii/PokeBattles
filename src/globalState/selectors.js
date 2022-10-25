@@ -25,6 +25,24 @@ const selectRoundWinner = (state)  => {
 
 }
 
+const selectCustomRuleSet = (state) => {
+ 
+    if(state.customRuleSet === state.defaultRuleSet){
+        return state.defaultRuleSet; 
+    }
+    //TODO: HER SKAL DU RETURNERE DET NYE EVENTUELT
+    return state.defaultRuleSet;
+    
+}
+
+const selectDefaultRuleSet = (state) => {
+    const [venusaur, blastoise, charizard ] = Pokemon; 
+    const defaultRules = [venusaur, blastoise, charizard]; 
+
+    state.defaultRuleSet = defaultRules; 
+    return defaultRules; 
+}
+
 const selectPlayerPokemonType = (state) => {
     const playerPokemon = selectPlayerPokemon(state); 
 
@@ -52,5 +70,7 @@ export {
     selectPlayerPokemon, 
     selectRivalPokemon, 
     selectPokeType, 
-    selectRoundWinner
+    selectRoundWinner, 
+    selectCustomRuleSet, 
+    selectDefaultRuleSet
 }
