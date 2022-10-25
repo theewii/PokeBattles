@@ -1,6 +1,6 @@
 import Context from "../globalState/context"; 
 import { useContext, useEffect } from "react";
-import { selectPlayerPokemon, selectRivalPokemon, selectRoundWinner, selectPlayerScore, selectRivalScore, selectIsChoosingPokemon, selectCustomRuleSet, selectDefaultRuleSet } from "../globalState/selectors";
+import { selectPlayerPokemon, selectRivalPokemon, selectRoundWinner, selectPlayerScore, selectRivalScore, selectIsChoosingPokemon, selectCustomRuleSet, selectDefaultRuleSet, selectIsUsingCustomRuleSet } from "../globalState/selectors";
 
 const usePlayerPokemon = () => {
     const { state, dispatch } = useContext(Context);
@@ -31,6 +31,16 @@ const useIsChoosingPokemon = () => {
   }
 
   return [selectIsChoosingPokemon(state), setIsChoosingPokemon]
+}
+
+const useIsUsingCustomRuleSet = () => {
+  const {state, dispatch} = useContext(Context); 
+
+  const setIsUsingCustomRuleSet = (isUsingCustomRuleSet) => {
+    dispatch({data: {isUsingCustomRuleSet}})
+  }
+
+  return [selectIsUsingCustomRuleSet(state), setIsUsingCustomRuleSet]
 }
 
 const useRound = () => {
@@ -107,7 +117,8 @@ const usePlayerScore = () => {
     useRound, 
     useIsChoosingPokemon, 
     useCustomRuleSet, 
-    useDefaultRuleSet
+    useDefaultRuleSet, 
+    useIsUsingCustomRuleSet
   }
 //dispatch sender inn et objekt som heter data, inni den funksjonen skal jeg returnere et objekt med datakey
 //som skal inneholde playerPokemonID - importer selector selectplayerpokemon- hooken skal returnere den anynyme 
