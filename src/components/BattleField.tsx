@@ -6,7 +6,7 @@ import pokeTypes from "../data/pokeTypes.json";
 import { Button } from "react-bootstrap";
 import GameArea from "./GameArea";
 import PokemonData from "../data/pokemon.json";
-import { usePlayerPokemon, useRivalPokemon, useRound, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCurrentRuleSet } from "../hooks/hooks";
+import { usePlayerPokemon, useRivalPokemon, useRound, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomtRuleSet } from "../hooks/hooks";
 import { Pokemon } from "./Pokemon";
 export function BattleField(){
 
@@ -19,8 +19,8 @@ export function BattleField(){
     const [playerPokemon] = usePlayerPokemon();
     
     //se om jeg får gjort noe med denne
-    const [currentRuleSet] = useCurrentRuleSet(); 
-    console.log(currentRuleSet); 
+    const [defaultRuleSet] = useDefaultRuleSet(); 
+    console.log(defaultRuleSet); 
 
     const [venusaur, blastoise, charizard ] = PokemonData; 
 
