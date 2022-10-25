@@ -36,14 +36,6 @@ const selectCustomRuleSet = (state) => {
     
 }
 
-const selectWinner = (state) => {
-    if(state.playerScore === 2){
-        return "player"; 
-    }if(state.rivalScore === 2){
-        return "rival"
-    }
-}
-
 const selectDefaultRuleSet = (state) => {
     const [venusaur, blastoise, charizard ] = Pokemon; 
     const defaultRules = [venusaur, blastoise, charizard]; 
@@ -83,5 +75,4 @@ export {
     selectRoundWinner, 
     selectCustomRuleSet, 
     selectDefaultRuleSet, 
-    selectWinner
 }

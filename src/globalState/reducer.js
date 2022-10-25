@@ -9,7 +9,8 @@ export const initialState = {
     isChoosingPokemon: false, 
     defaultRuleSet: [], 
     customRuleSet: [], 
-    isUsingCustomRuleSet: false
+    isUsingCustomRuleSet: false,
+    hasWinner: false
 }
 
 const reducer = (state = initialState, action) => {

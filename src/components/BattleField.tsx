@@ -2,9 +2,6 @@ import "./BattleField.css";
 import { useWindowDimensions } from '../utilities/useWindowDimensions';
 import { ScoreBoard } from "./ScoreBoard";
 import { useEffect, useState } from "react";
-import pokeTypes from "../data/pokeTypes.json"; 
-import { Button } from "react-bootstrap";
-import PokemonData from "../data/pokemon.json";
 // @ts-ignore
 import { usePlayerPokemon, useRivalPokemon, useRound, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomRuleSet } from "../hooks/hooks";
 import { Pokemon } from "./Pokemon";
@@ -19,19 +16,34 @@ export function BattleField(){
     const [rivalScore] = useRivalScore(); 
 
     const [playerPokemon] = usePlayerPokemon();
-    
-    //se om jeg får gjort noe med denne
-    const [defaultRuleSet] = useDefaultRuleSet(); 
 
     const [rivalPokemon]  = useRivalPokemon(); 
+
+    const [hasWinner, setHasWinner] = useState(false); 
+
+    const [isWinner, setIsWinner] = useState(""); 
 
     const [isChoosingPokemon, setIsChoosingPokemon] = useIsChoosingPokemon(); 
 
     useEffect(() => {
+        if(playerPokemon === null && rivalPokemon === null){
+            return; 
+        }
         setIsChoosingPokemon(true);
         setTimeout(setIsChoosingPokemon, 3000, false); 
 
     }, [playerPokemon, rivalPokemon]) 
+
+    useEffect(() => {
+        if(rivalScore === 2){
+            setIsWinner("Rival"); 
+            setHasWinner(true); 
+
+        }if(playerScore ===2){
+            setIsWinner("Player"); 
+            setHasWinner(true); 
+        }
+    }, [playerScore, rivalScore])
 
     var dimensions = useWindowDimensions(); 
 
@@ -57,7 +69,11 @@ export function BattleField(){
                     </div>
                     <div className="midLeft1"></div>
                     <div className="mid1">
+                        {hasWinner ? 
+                        <div>{isWinner} has won the battle!</div>
+                        :
                         <ChoosePokemonModal cssClassName={"playButtonBigScreen"}/>
+                        }
                     </div>
                     <div className="midRight1"></div>
                     <div className="midLeft2">

@@ -47,6 +47,9 @@ export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}
           <Modal.Title>Choose your Pokemon!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+            <h4 className='text-center'>Rules: </h4>
+            <h4 className='text-center'>Grass beats water, water beats fire, fire beats grass!</h4>
+            <br></br>
             <div className="gridContainer">
                 <div className="type1">
                     <h2>{capitalizeFirstLetter(venusaur.type)}</h2>
