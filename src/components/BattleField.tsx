@@ -29,7 +29,7 @@ export function BattleField(){
 
     useEffect(() => {
         setIsChoosingPokemon(true);
-        setTimeout(setIsChoosingPokemon, 300000, false); 
+        setTimeout(setIsChoosingPokemon, 3000, false); 
 
     }, [playerPokemon, rivalPokemon]) 
 
@@ -49,7 +49,7 @@ export function BattleField(){
                     <div className="topRight">
                        {isChoosingPokemon ?
                           <div className="pulse-base">
-                            <img style={{objectFit: "cover", width:"13em"}}src="./Images/Pokeball.png"></img>
+                            <img className="pokeballCenter" src="./Images/Pokeball.png"></img>
                           </div>
                        :
                         <Pokemon pokemonData={rivalPokemon} cssClassName={"pokemonBigScreen"}/>
@@ -63,7 +63,7 @@ export function BattleField(){
                     <div className="midLeft2">
                     {isChoosingPokemon ?
                           <div className="pulse-base">
-                          <img style={{objectFit: "cover", width:"13em"}}src="./Images/Pokeball.png"></img>
+                          <img className="pokeballCenter" src="./Images/Pokeball.png"></img>
                         </div>
                     :
                     <Pokemon pokemonData={playerPokemon} cssClassName={"pokemonBigScreen"}/>
