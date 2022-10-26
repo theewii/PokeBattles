@@ -5,11 +5,10 @@ export const initialState = {
     rivalScore: 0,  
     playerPokemon: null, 
     rivalPokemon: null, 
-    ruleset: null, 
     isChoosingPokemon: false, 
     defaultRuleSet: [], 
-    customRuleSet: [], 
-    isUsingCustomRuleSet: false,
+    customRuleSet: [],   //For potential further development, not in use now
+    isUsingCustomRuleSet: false,  //For potential further development, not in use now
     hasWinner: false,
     battleState: "Choosing pokemon..."
 }

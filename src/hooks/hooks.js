@@ -34,6 +34,7 @@ const useIsChoosingPokemon = () => {
   return [selectIsChoosingPokemon(state), setIsChoosingPokemon]
 }
 
+//For potential further development, not in use now
 const useIsUsingCustomRuleSet = () => {
   const {state, dispatch} = useContext(Context); 
 
@@ -104,6 +105,7 @@ const usePlayerScore = () => {
     ]
   }
 
+  //For potential further development, not in use now
   const useCustomRuleSet = () => {
     const {state, dispacth} = useContext(Context)
     const setCustomRuleset = () => dispacth({data: {customRuleSet}})
