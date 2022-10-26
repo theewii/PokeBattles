@@ -11,6 +11,8 @@ const selectRivalPokemon = (state) => Pokemon.find(({id}) => id === state.rivalP
 
 const selectIsChoosingPokemon = (state) => state.isChoosingPokemon; 
 
+const selectBattleState = (state) => state.battleState; 
+
 const selectIsUsingCustomRuleSet = (state) => state.isUsingCustomRuleSet; 
 
 const selectRoundWinner = (state)  => {
@@ -75,4 +77,5 @@ export {
     selectRoundWinner, 
     selectCustomRuleSet, 
     selectDefaultRuleSet, 
+    selectBattleState
 }

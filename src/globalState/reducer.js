@@ -10,10 +10,12 @@ export const initialState = {
     defaultRuleSet: [], 
     customRuleSet: [], 
     isUsingCustomRuleSet: false,
-    hasWinner: false
+    hasWinner: false,
+    battleState: "Choosing pokemon..."
 }
 
 const reducer = (state = initialState, action) => {
+  console.log(action)
   return {
     ...state, 
     ...action.data

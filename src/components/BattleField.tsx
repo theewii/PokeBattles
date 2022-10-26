@@ -3,7 +3,7 @@ import { useWindowDimensions } from '../utilities/useWindowDimensions';
 import { ScoreBoard } from "./ScoreBoard";
 import { useEffect, useState } from "react";
 // @ts-ignore
-import { usePlayerPokemon, useRivalPokemon, useRound, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomRuleSet } from "../hooks/hooks";
+import { usePlayerPokemon, useRivalPokemon, useRound, useInitialState, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomRuleSet } from "../hooks/hooks";
 import { Pokemon } from "./Pokemon";
 import ChoosePokemonModal from "./ChoosePokemonModal";
 import { Button } from "react-bootstrap";
@@ -31,6 +31,8 @@ export function BattleField(){
     const [hasWinner, setHasWinner] = useState(false); 
 
     const [isWinner, setIsWinner] = useState(""); 
+
+    const resetState = useInitialState(); 
 
     const [isChoosingPokemon, setIsChoosingPokemon] = useIsChoosingPokemon(); 
 
@@ -86,7 +88,7 @@ export function BattleField(){
                         <div className="gameOverContainer">
                             <img style={{objectFit:"cover", maxWidth:"20em"}}src={getWinnerImageUrl(isWinner)}></img>
                             <br></br>
-                            <Button variant="secondary">Play again?</Button>
+                            <Button variant="secondary" onClick={() => {resetState(); setHasWinner(false)}}>Play again?</Button>
                         </div>
                         :
                         <ChoosePokemonModal disableButton={isChoosingPokemon} cssClassName={"playButtonBigScreen"}/>
@@ -130,13 +132,33 @@ export function BattleField(){
                          user={"Rival"}/>
                     </div>
                     <div className="rivalPokemon">
-                        <Pokemon pokemonData={rivalPokemon} cssClassName={"pokemonSmallScreen"}/>
+                    {isChoosingPokemon ?
+                        <div className="pulse-base-small">
+                        <img className="pokeballCenter-small" src="./Images/Pokeball.png"></img>
+                        </div>
+                    :
+                        <Pokemon 
+                        animationClass={"animationMoveVerticalDown"}
+                        pokemonData={rivalPokemon} 
+                        cssClassName={"pokemonSmallScreen"}/>
+                    }
                     </div>
                     <div className="gameArea">
-                        <ChoosePokemonModal cssClassName={"playButtonSmallScreen"}/>
+                        <ChoosePokemonModal 
+                        disableButton={isChoosingPokemon}
+                        cssClassName={"playButtonSmallScreen"}/>
                     </div>
                     <div className="playerPokemon">
-                        <Pokemon pokemonData={playerPokemon} cssClassName={"pokemonSmallScreen"}/>
+                        {isChoosingPokemon ?
+                            <div className="pulse-base-small">
+                            <img className="pokeballCenter-small" src="./Images/Pokeball.png"></img>
+                            </div>
+                        :
+                            <Pokemon 
+                            animationClass={"animationMoveVerticalUp"}
+                            pokemonData={playerPokemon} 
+                            cssClassName={"pokemonSmallScreen"}/>
+                        }
                     </div>
                     <div className="playerScore" >
                         <ScoreBoard

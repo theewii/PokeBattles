@@ -1,12 +1,13 @@
 import Context from "../globalState/context"; 
 import { useContext, useEffect } from "react";
 import { selectPlayerPokemon, selectRivalPokemon, selectRoundWinner, selectPlayerScore, selectRivalScore, selectIsChoosingPokemon, selectCustomRuleSet, selectDefaultRuleSet, selectIsUsingCustomRuleSet } from "../globalState/selectors";
+import { initialState } from "../globalState/reducer"
 
 const usePlayerPokemon = () => {
     const { state, dispatch } = useContext(Context);
 
     const setPlayerPokemon = (playerPokemon) => {
-      dispatch({data: {playerPokemon}})
+      dispatch({data: {playerPokemon, battleState:"Rival choosing pokemon..."}})
     }
 
     return [selectPlayerPokemon(state), setPlayerPokemon]
@@ -17,7 +18,7 @@ const useRivalPokemon = () => {
 
   const setRivalPokemon = (rivalPokemon) => {
 
-    dispatch({data: {rivalPokemon}})
+    dispatch({data: {rivalPokemon, battleState:"Ready to battle!"}})
   }
 
   return [selectRivalPokemon(state), setRivalPokemon]
@@ -43,22 +44,30 @@ const useIsUsingCustomRuleSet = () => {
   return [selectIsUsingCustomRuleSet(state), setIsUsingCustomRuleSet]
 }
 
+const useBattleState = () => {
+  
+  const {state} = useContext(Context); 
+
+  return state.battleState; 
+}
+
 const useRound = () => {
   const [playerPokemon] = usePlayerPokemon(); 
   const [rivalPokemon] = useRivalPokemon();  
   const [playerScore, setPlayerScore] = usePlayerScore(); 
   const [rivalScore, setRivalScore] = useRivalScore(); 
+  const battleState = useBattleState()
 
   const {state} = useContext(Context); 
 
   useEffect(() => {
 
-    if(playerPokemon === null || rivalPokemon === null){
+    if(playerPokemon === null || rivalPokemon === null || battleState !== "Ready to battle!"){
       return; 
     }
 
     if(selectRoundWinner(state) === "player"){
-      //timeouts to line up with the animation
+       //timeouts to line up with the animation
         setTimeout(setPlayerScore, 3000, (playerScore + 1)); 
     }if(selectRoundWinner(state) === "rival"){
         setTimeout(setRivalScore, 3000, (rivalScore + 1)); 
@@ -67,22 +76,28 @@ const useRound = () => {
     }
 
   },     
-  [playerPokemon, rivalPokemon])
+  [playerPokemon, rivalPokemon, battleState])
   
 }
 
 const usePlayerScore = () => {
     const { state, dispatch } = useContext(Context)
-    const setScore = (playerScore) => dispatch({ data: { playerScore }})
+    const setScore = (playerScore) => dispatch({ data: { playerScore, battleState:"Choosing pokemon..."}})
     return [
       selectPlayerScore(state),
       setScore
     ]
   }
 
+  const useInitialState = () => {
+    const { state, dispatch } = useContext(Context)
+
+    return () => dispatch({data: initialState})
+  }
+
   const useRivalScore = () => {
     const { state, dispatch } = useContext(Context)
-    const setScore = (rivalScore) => dispatch({ data: { rivalScore }})
+    const setScore = (rivalScore) => dispatch({ data: { rivalScore, battleState:"Choosing pokemon..."}})
     return [
       selectRivalScore(state),
       setScore
@@ -117,6 +132,8 @@ const usePlayerScore = () => {
     useCustomRuleSet, 
     useDefaultRuleSet, 
     useIsUsingCustomRuleSet, 
+    useBattleState, 
+    useInitialState
   }
 //dispatch sender inn et objekt som heter data, inni den funksjonen skal jeg returnere et objekt med datakey
 //som skal inneholde playerPokemonID - importer selector selectplayerpokemon- hooken skal returnere den anynyme 

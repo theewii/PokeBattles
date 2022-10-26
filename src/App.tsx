@@ -11,7 +11,7 @@ function App() {
   return (
     <>
     <div className="overlay">
-    <Container className="pt-5 pb-5">
+    <Container>
       <BattleField/>
     </Container>
     </div>

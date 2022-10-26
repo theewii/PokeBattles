@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "./Pokemon.css"; 
 // @ts-ignore
-import { usePlayerPokemon, useRivalPokemon, useDefaultRuleSet, useIsChoosingPokemon} from '../hooks/hooks';
+import { usePlayerPokemon, useRivalPokemon, useDefaultRuleSet, useBattleState} from '../hooks/hooks';
 import "./ChoosePokemon.css"; 
 
 import Pokemon from "../data/pokemon.json";
@@ -20,6 +20,8 @@ export default function ChoosePokemonModal({cssClassName, disableButton}:{cssCla
 
   const [defaultRuleSet] = useDefaultRuleSet(); 
 
+  const battleState = useBattleState(); 
+
   const [venusaur, blastoise, charizard ] = Pokemon; 
 
   function capitalizeFirstLetter(pokeType : string){
@@ -27,14 +29,14 @@ export default function ChoosePokemonModal({cssClassName, disableButton}:{cssCla
   }
 
   useEffect(() => {
-    if(playerPokemon === null){
+    if(playerPokemon === null || battleState !== "Rival choosing pokemon..."){
         return; 
     }
 
     const randomPokemon = defaultRuleSet[Math.floor(Math.random() * defaultRuleSet.length)]; 
     // @ts-ignore
     setRivalPokemon(randomPokemon?.id);
-  }, [playerPokemon])
+  }, [playerPokemon, battleState])
 
   return (
     <>
@@ -48,9 +50,10 @@ export default function ChoosePokemonModal({cssClassName, disableButton}:{cssCla
           <Modal.Title><img src="./Images/PokeBattles.png" style={{width:"300px"}}></img></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <h4 className='text-center'>Rules: </h4>
+            <h4 className='text-center' style={{fontWeight:"bold"}}>Rules</h4>
+            <h4 className='text-center'>Best score out of 3</h4>
             <h4 className='text-center'>Grass beats water, water beats fire, fire beats grass!</h4>
-            <br></br>
+            <br/>
             <div className="gridContainer">
                 <div className="type1">
                     <h2>{capitalizeFirstLetter(venusaur.type)}</h2>
@@ -80,19 +83,19 @@ export default function ChoosePokemonModal({cssClassName, disableButton}:{cssCla
                     <h2>{charizard.name}</h2>
                 </div>
                 <div className="pokemon1">
-                    <button onClick={() => {setPlayerPokemon(venusaur.id); handleClose()}}>
+                    <Button variant="outline-success" onClick={() => {setPlayerPokemon(venusaur.id); handleClose()}}>
                         <img className="image" src={venusaur.imageUrl}/>
-                    </button>
+                    </Button>
                 </div>
                 <div className="pokemon2">
-                    <button onClick={() => {setPlayerPokemon(blastoise.id); handleClose()}}>
+                    <Button variant="outline-primary" onClick={() => {setPlayerPokemon(blastoise.id); handleClose()}}>
                         <img className="image" src={blastoise.imageUrl}/>
-                </button>
+                </Button>
                 </div>
                 <div className="pokemon3">
-                    <button onClick={() => {setPlayerPokemon(charizard.id); handleClose()}}>
+                    <Button variant="outline-danger" onClick={() => {setPlayerPokemon(charizard.id); handleClose()}}>
                         <img  className="image"  src={charizard.imageUrl}/>
-                    </button>
+                    </Button>
                 </div>
         
         
