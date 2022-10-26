@@ -45,7 +45,7 @@ export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}
 
       <Modal size="xl"show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Choose your Pokemon!</Modal.Title>
+          <Modal.Title><img src="./Images/PokeBattles.png" style={{marginLeft:"140%", width:"300px"}}></img></Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <h4 className='text-center'>Rules: </h4>

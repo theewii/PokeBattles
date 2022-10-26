@@ -17,3 +17,31 @@
     object-fit:cover; 
     width: 5em; 
 }
+
+.animationMoveUp{
+    position: relative;
+    animation: diagonal-move-anim-up 0.5s linear;
+}
+@keyframes diagonal-move-anim-up {
+
+    0% {
+        transform: translatex(0px) translatey(0px);
+    }
+    100% {
+        transform: translatex(350px) translatey(-350px);
+    }
+}
+
+.animationMoveDown{
+    position: relative;
+    animation: diagonal-move-anim-down 0.5s linear;
+}
+@keyframes diagonal-move-anim-down {
+
+    0% {
+        transform: translatex(0px) translatey(0px);
+    }
+    100% {
+        transform: translatex(-350px) translatey(350px);
+    }
+}

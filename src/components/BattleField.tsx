@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { usePlayerPokemon, useRivalPokemon, useRound, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomRuleSet } from "../hooks/hooks";
 import { Pokemon } from "./Pokemon";
 import ChoosePokemonModal from "./ChoosePokemonModal";
+import { Button } from "react-bootstrap";
 
 export function BattleField(){
 
@@ -65,13 +66,21 @@ export function BattleField(){
                             <img className="pokeballCenter" src="./Images/Pokeball.png"></img>
                           </div>
                        :
-                        <Pokemon pokemonData={rivalPokemon} cssClassName={"pokemonBigScreen"}/>
+                        <Pokemon 
+                        pokemonData={rivalPokemon} 
+                        cssClassName={"pokemonBigScreen"}
+                        animationClass={"animationMoveDown"}
+                        />
                         }   
                     </div>
                     <div className="midLeft1"></div>
                     <div className="mid1">
                         {hasWinner ? 
-                        <div>{isWinner} has won the battle!</div>
+                        <div className="gameOverContainer">
+                            <img style={{objectFit:"cover", maxWidth:"20em"}}src="./Images/playerWins.png"></img>
+                            <br></br>
+                            <Button variant="secondary">Play again?</Button>
+                        </div>
                         :
                         <ChoosePokemonModal cssClassName={"playButtonBigScreen"}/>
                         }
@@ -83,7 +92,11 @@ export function BattleField(){
                           <img className="pokeballCenter" src="./Images/Pokeball.png"></img>
                         </div>
                     :
-                    <Pokemon pokemonData={playerPokemon} cssClassName={"pokemonBigScreen"}/>
+                    <Pokemon 
+                    pokemonData={playerPokemon} 
+                    cssClassName={"pokemonBigScreen"}
+                    animationClass={"animationMoveUp"}
+                    />
                     }
                        
                     </div>
