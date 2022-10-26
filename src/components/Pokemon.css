@@ -29,6 +29,7 @@
     }
     50% {
         transform: translatex(350px) translatey(-350px);
+        opacity: 0.5;
     }
     100%{
         transform: translatex(0px) translatey(0px);
@@ -46,6 +47,7 @@
     }
     50% {
         transform: translatex(-350px) translatey(350px);
+        opacity: 0.5;
     }
     100% {
         transform: translatex(0px) translatey(0px);
@@ -63,6 +65,7 @@
     }
     50% {
         transform: translatex(0px) translatey(200px);
+        opacity: 0.5;
     }
     100% {
         transform: translatex(0px) translatey(0px);
@@ -80,6 +83,7 @@
     }
     50% {
         transform: translatex(0px) translatey(-200px);
+        opacity: 0.5;
     }
     100% {
         transform: translatex(0px) translatey(0px);
