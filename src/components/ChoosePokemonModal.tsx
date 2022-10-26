@@ -32,6 +32,7 @@ export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}
     }
 
     const randomPokemon = defaultRuleSet[Math.floor(Math.random() * defaultRuleSet.length)]; 
+    // @ts-ignore
     setRivalPokemon(randomPokemon?.id); 
   }, [playerPokemon])
 
