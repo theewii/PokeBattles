@@ -135,6 +135,3 @@ const usePlayerScore = () => {
     useBattleState, 
     useInitialState
   }
-//dispatch sender inn et objekt som heter data, inni den funksjonen skal jeg returnere et objekt med datakey
-//som skal inneholde playerPokemonID - importer selector selectplayerpokemon- hooken skal returnere den anynyme 
-//fuksjonen som setter player pokemon og verdien av selectoren 
