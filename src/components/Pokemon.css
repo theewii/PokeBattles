@@ -20,56 +20,68 @@
 
 .animationMoveUp{
     position: relative;
-    animation: diagonal-move-anim-up 0.5s linear;
+    animation: diagonal-move-anim-up 1s linear;
 }
 @keyframes diagonal-move-anim-up {
 
     0% {
         transform: translatex(0px) translatey(0px);
     }
-    100% {
+    50% {
         transform: translatex(350px) translatey(-350px);
+    }
+    100%{
+        transform: translatex(0px) translatey(0px);
     }
 }
 
 .animationMoveDown{
     position: relative;
-    animation: diagonal-move-anim-down 0.5s linear;
+    animation: diagonal-move-anim-down 1s linear;
 }
 @keyframes diagonal-move-anim-down {
 
     0% {
         transform: translatex(0px) translatey(0px);
     }
-    100% {
+    50% {
         transform: translatex(-350px) translatey(350px);
+    }
+    100% {
+        transform: translatex(0px) translatey(0px);
     }
 }
 
 .animationMoveVerticalDown{
     position: relative;
-    animation: diagonal-move-anim-vertical-down 0.5s linear;
+    animation: diagonal-move-anim-vertical-down 1s linear;
 }
 @keyframes diagonal-move-anim-vertical-down {
 
     0% {
         transform: translatex(0px) translatey(0px);
     }
-    100% {
+    50% {
         transform: translatex(0px) translatey(200px);
+    }
+    100% {
+        transform: translatex(0px) translatey(0px);
     }
 }
 
 .animationMoveVerticalUp{
     position: relative;
-    animation: diagonal-move-anim-vertical-up 0.5s linear;
+    animation: diagonal-move-anim-vertical-up 1s linear;
 }
 @keyframes diagonal-move-anim-vertical-up {
 
     0% {
         transform: translatex(0px) translatey(0px);
     }
-    100% {
+    50% {
         transform: translatex(0px) translatey(-200px);
+    }
+    100% {
+        transform: translatex(0px) translatey(0px);
     }
 }
