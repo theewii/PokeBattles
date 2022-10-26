@@ -73,7 +73,7 @@ export function BattleField(){
                     <div className="rivalScore">
                         <ScoreBoard 
                         score={rivalScore}
-                        user={"Rival"}/>
+                        user={"Rival (Computer)"}/>
                     </div>
                     <div className="topRight">
                        {isChoosingPokemon ?
@@ -135,7 +135,7 @@ export function BattleField(){
                     <div className="rivalScore">
                         <ScoreBoard
                          score={rivalScore}
-                         user={"Rival"}/>
+                         user={"Rival (Computer)"}/>
                     </div>
                     <div className="rivalPokemon">
                     {isChoosingPokemon ?
