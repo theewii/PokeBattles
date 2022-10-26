@@ -31,7 +31,7 @@ const selectCustomRuleSet = (state) => {
     if(state.customRuleSet === state.defaultRuleSet){
         return state.defaultRuleSet; 
     }
-    //TODO: HER SKAL DU RETURNERE DET NYE EVENTUELT
+    //TODO: HER SKAL DU RETURNERE DET NYE EVENTUELT - videreutvikling
     return state.defaultRuleSet;
     
 }

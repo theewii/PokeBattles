@@ -61,6 +61,8 @@ const useRound = () => {
         setPlayerScore(playerScore + 1); 
     }if(selectRoundWinner(state) === "rival"){
       setRivalScore(rivalScore + 1)
+    }else {
+      return; 
     }
 
   },     

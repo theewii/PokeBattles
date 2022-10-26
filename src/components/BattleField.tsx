@@ -11,6 +11,7 @@ export function BattleField(){
 
 
     useRound(); 
+
     const [ playerScore ] = usePlayerScore();
 
     const [rivalScore] = useRivalScore(); 

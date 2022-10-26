@@ -69,6 +69,14 @@
     grid-area: topRight;
     grid-row-start: topRight;
     grid-row-end: midRight1;
+    min-height: 400px;
+    min-width: 400px;
+}
+
+.topRightPlaceHolder{
+    grid-area: topRight;
+    grid-row-start: topRight;
+    grid-row-end: midRight1;
 }
 
 .midLeft1 {
@@ -89,6 +97,8 @@
     grid-area: midLeft2;
     grid-row-start:midLeft2; 
     grid-row-end:bottomLeft;
+    min-height: 400px;
+    min-width: 400px;
 }
 
 .mid2 {
@@ -125,7 +135,7 @@
     border: 15px solid rgb(99, 99, 99);
     opacity: 0.9;
     border-radius: 50%;
-    margin: 0 auto;
+    margin:6em;
 }
   .pulse-base:before {
     content:"";
