@@ -15,7 +15,6 @@ export const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-  console.log(action)
   return {
     ...state, 
     ...action.data

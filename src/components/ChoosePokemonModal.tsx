@@ -54,6 +54,7 @@ export default function ChoosePokemonModal({cssClassName, disableButton}:{cssCla
             <h4 className='text-center'>Best score out of 3</h4>
             <h4 className='text-center'>Grass beats water, water beats fire, fire beats grass!</h4>
             <br/>
+            {/**TODO: Gjør en .map over lista, det her er for hardkoda */}
             <div className="gridContainer">
                 <div className="type1">
                     <h2>{capitalizeFirstLetter(venusaur.type)}</h2>

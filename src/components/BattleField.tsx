@@ -3,7 +3,7 @@ import { useWindowDimensions } from '../utilities/useWindowDimensions';
 import { ScoreBoard } from "./ScoreBoard";
 import { useEffect, useState } from "react";
 // @ts-ignore
-import { usePlayerPokemon, useRivalPokemon, useRound, useInitialState, useDefaultRuleSet, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomRuleSet } from "../hooks/hooks";
+import { usePlayerPokemon, useRivalPokemon, useRound, useInitialState, useBattleState, usePlayerScore, useRivalScore, useIsChoosingPokemon, useCustomRuleSet } from "../hooks/hooks";
 import { Pokemon } from "./Pokemon";
 import ChoosePokemonModal from "./ChoosePokemonModal";
 import { Button } from "react-bootstrap";
@@ -34,16 +34,22 @@ export function BattleField(){
 
     const resetState = useInitialState(); 
 
+    const battleState = useBattleState(); 
+
     const [isChoosingPokemon, setIsChoosingPokemon] = useIsChoosingPokemon(); 
 
     useEffect(() => {
         if(playerPokemon === null && rivalPokemon === null){
             return; 
         }
+
+        if(battleState !== "Ready to battle!"){
+            return;
+        }
         setIsChoosingPokemon(true);
         setTimeout(setIsChoosingPokemon, 3000, false); 
 
-    }, [playerPokemon, rivalPokemon]) 
+    }, [playerPokemon, rivalPokemon, battleState]) 
 
     useEffect(() => {
         if(rivalScore === 2){
@@ -144,9 +150,17 @@ export function BattleField(){
                     }
                     </div>
                     <div className="gameArea">
+                    {hasWinner ? 
+                        <div className="gameOverContainer">
+                            <img style={{objectFit:"cover", maxWidth:"20em"}}src={getWinnerImageUrl(isWinner)}></img>
+                            <br></br>
+                            <Button variant="secondary" onClick={() => {resetState(); setHasWinner(false)}}>Play again?</Button>
+                        </div>
+                        :
                         <ChoosePokemonModal 
                         disableButton={isChoosingPokemon}
                         cssClassName={"playButtonSmallScreen"}/>
+                    }
                     </div>
                     <div className="playerPokemon">
                         {isChoosingPokemon ?
