@@ -125,13 +125,13 @@
 
 .pokeballCenter {
     object-fit: cover;
-    width: 15rem;
+    width: 13rem;
 }
 
 .pulse-base {
     position: relative;
-    height: 12em;
-    width: 12em;
+    height: 15em;
+    width: 15em;
     border: 15px solid rgb(99, 99, 99);
     opacity: 0.9;
     border-radius: 50%;
@@ -141,8 +141,8 @@
     content:"";
     border: 15px solid rgba(252, 252, 252, 0.3);
     border-radius: 50%;
-    height: 12em;
-    width: 12em;
+    height: 15em;
+    width: 15em;
     position: absolute;
     left: -15px;
     bottom: -15px;
