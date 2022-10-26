@@ -8,7 +8,7 @@ export function Pokemon({pokemonData, cssClassName}: {pokemonData: any; cssClass
     }
     return(
         <>
-        <img className={cssClassName}src={pokemonData.imageUrl}>
-        </img></>
+        <img className={cssClassName}src={pokemonData.imageUrl}></img>
+        </>
     )
 }

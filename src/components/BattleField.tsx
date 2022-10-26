@@ -89,7 +89,6 @@ export function BattleField(){
                     <div className="mid2"></div>
                     <div className="midRight2"></div>
                     <div className="bottomLeft">
-                 
                     </div>
                     <div className="playerScore">
                         <ScoreBoard 
