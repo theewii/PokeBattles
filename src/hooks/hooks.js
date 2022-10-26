@@ -58,9 +58,10 @@ const useRound = () => {
     }
 
     if(selectRoundWinner(state) === "player"){
-        setPlayerScore(playerScore + 1); 
+      //timeouts to line up with the animation
+        setTimeout(setPlayerScore, 3000, (playerScore + 1)); 
     }if(selectRoundWinner(state) === "rival"){
-      setRivalScore(rivalScore + 1)
+        setTimeout(setRivalScore, 3000, (rivalScore + 1)); 
     }else {
       return; 
     }

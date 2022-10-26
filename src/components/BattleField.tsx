@@ -8,8 +8,15 @@ import { Pokemon } from "./Pokemon";
 import ChoosePokemonModal from "./ChoosePokemonModal";
 import { Button } from "react-bootstrap";
 
-export function BattleField(){
 
+function getWinnerImageUrl(winner: string){
+    if(winner === "rival"){
+        return "./Images/RivalWins.png"
+    }
+    return "./Images/PlayerWins.png"
+}
+
+export function BattleField(){
 
     useRound(); 
 
@@ -38,12 +45,12 @@ export function BattleField(){
 
     useEffect(() => {
         if(rivalScore === 2){
-            setIsWinner("Rival"); 
-            setHasWinner(true); 
+            setIsWinner("rival"); 
+            setHasWinner(true)
 
         }if(playerScore ===2){
-            setIsWinner("Player"); 
-            setHasWinner(true); 
+            setIsWinner("player"); 
+            setHasWinner(true)
         }
     }, [playerScore, rivalScore])
 
@@ -77,12 +84,12 @@ export function BattleField(){
                     <div className="mid1">
                         {hasWinner ? 
                         <div className="gameOverContainer">
-                            <img style={{objectFit:"cover", maxWidth:"20em"}}src="./Images/playerWins.png"></img>
+                            <img style={{objectFit:"cover", maxWidth:"20em"}}src={getWinnerImageUrl(isWinner)}></img>
                             <br></br>
                             <Button variant="secondary">Play again?</Button>
                         </div>
                         :
-                        <ChoosePokemonModal cssClassName={"playButtonBigScreen"}/>
+                        <ChoosePokemonModal disableButton={isChoosingPokemon} cssClassName={"playButtonBigScreen"}/>
                         }
                     </div>
                     <div className="midRight1"></div>

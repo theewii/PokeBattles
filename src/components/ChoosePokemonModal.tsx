@@ -8,7 +8,7 @@ import "./ChoosePokemon.css";
 
 import Pokemon from "../data/pokemon.json";
 
-export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}) {
+export default function ChoosePokemonModal({cssClassName, disableButton}:{cssClassName: string; disableButton:boolean}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -33,19 +33,19 @@ export default function ChoosePokemonModal({cssClassName}:{cssClassName: string}
 
     const randomPokemon = defaultRuleSet[Math.floor(Math.random() * defaultRuleSet.length)]; 
     // @ts-ignore
-    setRivalPokemon(randomPokemon?.id); 
+    setRivalPokemon(randomPokemon?.id);
   }, [playerPokemon])
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}>
+      <Button disabled={disableButton}variant="secondary" onClick={handleShow}>
       <h3 className="mt-1">Play Game!</h3>
         <img className={cssClassName} src="./Images/Pokeball.png"></img>
       </Button>
 
       <Modal size="xl"show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title><img src="./Images/PokeBattles.png" style={{marginLeft:"140%", width:"300px"}}></img></Modal.Title>
+          <Modal.Title><img src="./Images/PokeBattles.png" style={{width:"300px"}}></img></Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <h4 className='text-center'>Rules: </h4>
