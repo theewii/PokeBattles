@@ -5,6 +5,7 @@
 .image{
     object-fit: cover;
     width: 100%;
+    width: 15em;
 }
 
 .gridContainer{
@@ -46,12 +47,15 @@
 
 .typeIcon1{
     grid-area:typeIcon1; 
+    max-width: 8em;
 }
 .typeIcon2{
     grid-area:typeIcon2; 
+    max-width: 8em;
 }
 .typeIcon3{
     grid-area:typeIcon3; 
+    max-width: 8em;
 }
 
 .pokemon1{
